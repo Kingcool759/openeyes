@@ -18,14 +18,14 @@
     <View
         app:layout_constraintBottom_toTopOf="@+id/mBottomNav"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:background="@color/gray"
         />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/mBottomNav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:clickable="true"
         android:focusable="true"
         app:elevation="0dp"
@@ -37,9 +37,9 @@
 
     <ImageView
         android:id="@+id/sendImageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@mipmap/fabu1"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@mipmap/fabu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

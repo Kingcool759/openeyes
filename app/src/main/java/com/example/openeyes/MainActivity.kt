@@ -1,14 +1,18 @@
 package com.example.openeyes
 
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.openeyes.fragment.*
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.openeyes.fragment.CommunityFrgment
+import com.example.openeyes.fragment.HomeFragment
+import com.example.openeyes.fragment.MessageFragment
+import com.example.openeyes.fragment.MineFragment
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
     private val mFragments by lazy {

@@ -3,7 +3,10 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--app状态栏颜色-->
+        <item name="colorPrimaryDark">@color/gray</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--去掉顶部系统TitleBar-->
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>
