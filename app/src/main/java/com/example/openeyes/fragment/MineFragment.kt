@@ -6,15 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.openeyes.R
-import com.example.openeyes.adapter.MineRecycler
+import com.example.openeyes.adapter.MineRecyclerAdapter
 import com.example.openeyes.viewmodel.MineViewModel
 import kotlinx.android.synthetic.main.mine_fragment.*
 
 class MineFragment : Fragment() {
-
-    private val textList = ArrayList<String>();
 
     private lateinit var viewModel: MineViewModel
 
@@ -22,27 +22,24 @@ class MineFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.mine_fragment, container, false)
+        val view = inflater.inflate(R.layout.mine_fragment, container, false)
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MineViewModel::class.java)
-        // TODO: Use the ViewModel
-        //使用Recycler
-        initTextList()
-        val layoutManager = LinearLayoutManager(context)
-        mineRecycler.layoutManager = layoutManager
-        val adapter = MineRecycler(textList)
-        mineRecycler.adapter = adapter
+        //点击事件处理
+        onClick()
     }
 
-    private fun initTextList(){
-        textList.add(0,"我的关注")
-        textList.add(1,"观察记录")
-        textList.add(2,"通知开关")
-        textList.add(3,"我的徽章")
-        textList.add(4,"意见反馈")
-        textList.add(5,"我要投稿")
+    private fun onClick(){
+        tv_mine_care.setOnClickListener { Toast.makeText(context,"关注",Toast.LENGTH_SHORT).show() }
+        tv_mine_record.setOnClickListener { Toast.makeText(context,"记录",Toast.LENGTH_SHORT).show() }
+        tv_mine_message.setOnClickListener { Toast.makeText(context,"消息",Toast.LENGTH_SHORT).show() }
+        tv_mine_badge.setOnClickListener { Toast.makeText(context,"徽章",Toast.LENGTH_SHORT).show() }
+        tv_mine_idea.setOnClickListener { Toast.makeText(context,"意见",Toast.LENGTH_SHORT).show() }
+        tv_mine_magazine.setOnClickListener { Toast.makeText(context,"投稿",Toast.LENGTH_SHORT).show() }
     }
+
 }

@@ -1,12 +1,12 @@
-package com.example.openeyes
+package com.example.openeyes.main
 
-import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.openeyes.R
 import com.example.openeyes.fragment.CommunityFrgment
 import com.example.openeyes.fragment.HomeFragment
 import com.example.openeyes.fragment.MessageFragment

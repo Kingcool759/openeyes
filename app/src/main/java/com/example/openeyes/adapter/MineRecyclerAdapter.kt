@@ -12,18 +12,18 @@ import com.example.openeyes.R
  * @auther
  * @describe
  */
-class MineRecycler(textList: ArrayList<String>) : RecyclerView.Adapter<MineRecycler.MyViewHolder>() {
+class MineRecyclerAdapter(textList: ArrayList<String>) : RecyclerView.Adapter<MineRecyclerAdapter.MyViewHolder>() {
 
     private val textList:ArrayList<String>? = textList
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MineRecycler.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MineRecyclerAdapter.MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_mine_item,parent,false)
         return MyViewHolder(view)
     }
 
     override fun getItemCount(): Int = textList!!.size
 
-    override fun onBindViewHolder(holder: MineRecycler.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MineRecyclerAdapter.MyViewHolder, position: Int) {
         val textpot = textList?.get(position)
         holder.title.text = textpot
     }

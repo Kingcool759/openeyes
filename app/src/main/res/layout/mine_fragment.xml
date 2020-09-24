@@ -133,28 +133,82 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mineRecycler"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nesScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/mineInfo" />
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/mineInfo"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <TextView
-        android:id="@+id/version"
-        android:text="Version 6.3.10"
-        app:layout_constraintTop_toBottomOf="@id/mineRecycler"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_marginTop="10dp"
-        android:text="找不到旧数据？"
-        app:layout_constraintTop_toBottomOf="@id/version"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_mine_care"
+                style="@style/Mine_tv"
+                android:text="我的关注" />
+
+            <TextView
+                android:id="@+id/tv_mine_record"
+                style="@style/Mine_tv"
+                android:text="观看记录"
+                app:layout_constraintTop_toBottomOf="@id/tv_mine_care" />
+
+            <TextView
+                android:id="@+id/tv_mine_message"
+                style="@style/Mine_tv"
+                android:text="通知开关"
+                app:layout_constraintTop_toBottomOf="@id/tv_mine_record" />
+
+            <TextView
+                android:id="@+id/tv_mine_badge"
+                style="@style/Mine_tv"
+                android:text="我的徽章"
+                app:layout_constraintTop_toBottomOf="@+id/tv_mine_message" />
+
+            <TextView
+                android:id="@+id/tv_mine_idea"
+                style="@style/Mine_tv"
+                android:text="意见反馈"
+                app:layout_constraintTop_toBottomOf="@+id/tv_mine_badge" />
+
+            <TextView
+                android:id="@+id/tv_mine_magazine"
+                style="@style/Mine_tv"
+                android:text="我要投稿"
+                app:layout_constraintTop_toBottomOf="@+id/tv_mine_idea" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_mine_magazine">
+
+                <TextView
+                    android:id="@+id/version"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:linksClickable="true"
+                    android:text="Version 6.3.10"
+                    app:layout_constraintBottom_toTopOf="@+id/version_data"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/version_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="找不到旧数据？"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/version" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
