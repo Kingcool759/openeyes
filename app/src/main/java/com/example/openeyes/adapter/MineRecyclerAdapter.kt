@@ -9,8 +9,8 @@ import com.example.openeyes.R
 
 /**
  * @data on 2020/9/23 5:37 PM
- * @auther
- * @describe
+ * @auther  armstrong
+ * @describe 我的界面用来做列表用的（后被NestedScrollView代替）
  */
 class MineRecyclerAdapter(textList: ArrayList<String>) : RecyclerView.Adapter<MineRecyclerAdapter.MyViewHolder>() {
 
