@@ -32,18 +32,14 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        //tab+fragment
+        initView()
+        initTabAndPager()
+        //业务逻辑
 
-        ininView()
-        tablayout.tabMode = TabLayout.MODE_FIXED
-        tablayout.addTab(tablayout.newTab().setText(list_title?.get(0)))
-        tablayout.addTab(tablayout.newTab().setText(list_title?.get(1)))
-        tablayout.addTab(tablayout.newTab().setText(list_title?.get(2)))
-        adapter = TabViewPagerAdapter(childFragmentManager, list_fragment!!, list_title!!)
-        viewpager.adapter = adapter
-        tablayout.setupWithViewPager(viewpager)
     }
 
-    private fun ininView() {
+    private fun initView() {
         list_fragment = ArrayList()
         val fxFragment = FaxianFragment()
         val tjFragment = TuijianFragment()
@@ -55,5 +51,15 @@ class HomeFragment : Fragment() {
         list_title?.add("发现")
         list_title?.add("推荐")
         list_title?.add("日报")
+    }
+
+    private fun initTabAndPager(){
+        tablayout.tabMode = TabLayout.MODE_FIXED
+        tablayout.addTab(tablayout.newTab().setText(list_title?.get(0)))
+        tablayout.addTab(tablayout.newTab().setText(list_title?.get(1)))
+        tablayout.addTab(tablayout.newTab().setText(list_title?.get(2)))
+        adapter = TabViewPagerAdapter(childFragmentManager, list_fragment!!, list_title!!)
+        viewpager.adapter = adapter
+        tablayout.setupWithViewPager(viewpager)
     }
 }

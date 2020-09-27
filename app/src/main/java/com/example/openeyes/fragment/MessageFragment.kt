@@ -36,13 +36,7 @@ class MessageFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MessageViewModel::class.java)
         ininView()
-        tablayout.tabMode = TabLayout.MODE_FIXED
-        tablayout.addTab(tablayout.newTab().setText(list_title?.get(0)))
-        tablayout.addTab(tablayout.newTab().setText(list_title?.get(1)))
-        tablayout.addTab(tablayout.newTab().setText(list_title?.get(2)))
-        adapter = TabViewPagerAdapter(childFragmentManager, list_fragment!!, list_title!!)
-        viewpager.adapter = adapter
-        tablayout.setupWithViewPager(viewpager)
+        initTabAndPager()
     }
 
     private fun ininView() {
@@ -57,5 +51,14 @@ class MessageFragment : Fragment() {
         list_title?.add("推送")
         list_title?.add("互动")
         list_title?.add("私信")
+    }
+    private fun initTabAndPager(){
+        tablayout.tabMode = TabLayout.MODE_FIXED
+        tablayout.addTab(tablayout.newTab().setText(list_title?.get(0)))
+        tablayout.addTab(tablayout.newTab().setText(list_title?.get(1)))
+        tablayout.addTab(tablayout.newTab().setText(list_title?.get(2)))
+        adapter = TabViewPagerAdapter(childFragmentManager, list_fragment!!, list_title!!)
+        viewpager.adapter = adapter
+        tablayout.setupWithViewPager(viewpager)
     }
 }

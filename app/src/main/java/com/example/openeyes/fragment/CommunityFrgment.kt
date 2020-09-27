@@ -35,12 +35,7 @@ class CommunityFrgment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(CommunityViewModel::class.java)
         ininView()
-        tablayout.tabMode = TabLayout.MODE_FIXED
-        tablayout.addTab(tablayout.newTab().setText(list_title?.get(0)))
-        tablayout.addTab(tablayout.newTab().setText(list_title?.get(1)))
-        adapter = TabViewPagerAdapter(childFragmentManager, list_fragment!!, list_title!!)
-        viewpager.adapter = adapter
-        tablayout.setupWithViewPager(viewpager)
+        initTabAndPager()
     }
 
     private fun ininView() {
@@ -52,5 +47,13 @@ class CommunityFrgment : Fragment() {
         list_title = ArrayList()
         list_title?.add("推荐")
         list_title?.add("关注")
+    }
+    private fun initTabAndPager(){
+        tablayout.tabMode = TabLayout.MODE_FIXED
+        tablayout.addTab(tablayout.newTab().setText(list_title?.get(0)))
+        tablayout.addTab(tablayout.newTab().setText(list_title?.get(1)))
+        adapter = TabViewPagerAdapter(childFragmentManager, list_fragment!!, list_title!!)
+        viewpager.adapter = adapter
+        tablayout.setupWithViewPager(viewpager)
     }
 }

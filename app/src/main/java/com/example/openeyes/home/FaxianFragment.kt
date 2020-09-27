@@ -10,10 +10,6 @@ import com.example.openeyes.R
 
 class FaxianFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FaxianFragment()
-    }
-
     private lateinit var viewModel: FaxianViewModel
 
     override fun onCreateView(
