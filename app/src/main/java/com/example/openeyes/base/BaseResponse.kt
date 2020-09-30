@@ -5,12 +5,7 @@ package com.example.openeyes.base
  * @auther
  * @describe
  */
-class BaseResponse {
-    /**
-     *  {
-    errorCode: -2,
-    errorMessage: "请先登录账号"
-    }
-     */
-
-}
+data class BaseResponse(
+    val errorCode: Int,
+    val errorMessage: String
+)

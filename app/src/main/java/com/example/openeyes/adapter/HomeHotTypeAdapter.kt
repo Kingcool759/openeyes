@@ -9,30 +9,36 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.openeyes.R
+import com.example.openeyes.databean.Item
+import com.example.openeyes.databean.ItemX
 
 /**
  * @data on 2020/9/28 10:44 AM
  * @auther
  * @describe
  */
-class HomeHotTypeAdapter(context: Context, imageUrlList: ArrayList<String>, textList: ArrayList<String>) : RecyclerView.Adapter<HomeHotTypeAdapter.MyViewHolder>() {
+class HomeHotTypeAdapter(context: Context, data: List<Item>?) : RecyclerView.Adapter<HomeHotTypeAdapter.MyViewHolder>() {
     private val context: Context? = context
-    private val imageUrlList: ArrayList<String>? = imageUrlList
-    private val textList: ArrayList<String>? = textList
+    private val dataList: List<Item>? = data
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeHotTypeAdapter.MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_home_hottype_item,parent,false)
         return MyViewHolder(view)
     }
 
-    override fun getItemCount(): Int = textList!!.size
+    override fun getItemCount(): Int = dataList!!.size
 
     override fun onBindViewHolder(holder: HomeHotTypeAdapter.MyViewHolder, position: Int) {
-        val url = imageUrlList?.get(position)
+        var url: String? = null
+        var title: String? = null
+        if (dataList?.get(position)?.type == "video"){
+            url = dataList.get(position).data.author.icon
+            title = dataList.get(position).data.category
+        }
         if (context != null) {
             Glide.with(context).load(url).into(holder.hottype_iv)
         }
-        holder.hottype_tv.text = textList?.get(position)
+        holder.hottype_tv.text = title
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

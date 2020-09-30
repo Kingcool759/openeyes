@@ -4,12 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.*
-import com.bumptech.glide.Glide
 import com.example.openeyes.R
-import kotlinx.android.synthetic.main.faxian_fragment.*
+import com.example.openeyes.databean.Item
+import com.example.openeyes.databean.ItemX
 
 /**
  * @data on 2020/9/27 2:53 PM
@@ -18,57 +16,63 @@ import kotlinx.android.synthetic.main.faxian_fragment.*
  */
 class HomeRecyclerAdapter(
     context: Context,
-    bannerUrlList: ArrayList<String>,
-    imgUrlList: ArrayList<String>,
-    textsList: ArrayList<String>
+    dataList: ArrayList<Item>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    //上下文环境+数据源
     private val mContext: Context = context
-    private val bannerList: ArrayList<String> =bannerUrlList
-    private val imgUriList: ArrayList<String> = imgUrlList
-    private val textList: ArrayList<String> = textsList
+    private val mDataList: ArrayList<Item> = dataList
 
     //设置ViewType用
     private val BANNER: Int = 0
-//    private val HOT_TYPE_TITLE: Int = 1
     private val HOT_TYPE: Int = 1
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): RecyclerView.ViewHolder {
-        if (viewType == BANNER){
+        if (viewType == BANNER) {
             val view =
                 LayoutInflater.from(parent.context).inflate(R.layout.recycler_banner, parent, false)
             return BannerViewHolder(view)
-        }else {
+        } else {
             val view =
-                LayoutInflater.from(parent.context).inflate(R.layout.recycler_home_hottype, parent, false)
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.recycler_home_hottype, parent, false)
             return HotTypeViewHolder(view)
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is BannerViewHolder){
+        var dataList: List<ItemX>? = null
+        if (mDataList.size == 0) {
+            return
+        }
+        if (holder is BannerViewHolder) {
+            if (mDataList.get(position).type == "horizontalScrollCard") {
+                if (mDataList.get(position).data.dataType == "HorizontalScrollCard") {
+                    dataList = mDataList.get(position).data.itemList
+                }
+            }
             val layoutManager = LinearLayoutManager(mContext)
             layoutManager.orientation = LinearLayoutManager.HORIZONTAL
             holder.banner_rv.layoutManager = layoutManager
-            holder.banner_rv.adapter = HomeBannerAdapter(mContext,bannerList)
+            holder.banner_rv.adapter = dataList?.let { HomeBannerAdapter(mContext, it) }
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(holder.banner_rv)
-        }else if(holder is HotTypeViewHolder){
-            val layoutManager = GridLayoutManager(mContext,2)
+        } else if (holder is HotTypeViewHolder) {
+            val layoutManager = GridLayoutManager(mContext, 2)
             layoutManager.orientation = GridLayoutManager.HORIZONTAL
             holder.hottype_rv.layoutManager = layoutManager
-            holder.hottype_rv.adapter = HomeHotTypeAdapter(mContext,imgUriList,textList)
+            holder.hottype_rv.adapter = HomeHotTypeAdapter(mContext, mDataList)
         }
     }
 
     override fun getItemCount(): Int = 2
 
     override fun getItemViewType(position: Int): Int {
-        if ( position == 0){
+        if (position == 0) {
             return BANNER
-        }else {
+        } else {
             return HOT_TYPE
         }
     }
