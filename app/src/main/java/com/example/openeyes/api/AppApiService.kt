@@ -1,6 +1,6 @@
 package com.example.openeyes.api
 
-import com.example.openeyes.databean.HomeHotListRes
+import com.example.openeyes.databean.HomeFaxianListRes
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -16,5 +16,5 @@ interface AppApiService {
 //    @GET(AppApi.homt_hotList)
 //    fun getHotDataList(): Call<HomeHotListRes>
     @GET(AppApi.home_faxian_List)
-    fun getfaxianDataList(): Call<HomeHotListRes>
+    fun getfaxianDataList(): Call<HomeFaxianListRes>
 }

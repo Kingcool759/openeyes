@@ -36,7 +36,7 @@ class HomeBannerAdapter(
 
     override fun onBindViewHolder(holder: HomeBannerAdapter.MyViewHolder, position: Int) {
         var url: String? = null
-        if (dataList.get(position).type == "banner2") {
+        if (dataList.get(position).type == "banner") {
             url = dataList.get(position).data.image
         }
         if (context != null) {

@@ -7,11 +7,11 @@ import com.example.openeyes.base.BaseResponse
  * @auther
  * @describe
  */
-data class HomeHotListRes(
+data class HomeFaxianListRes(
     val adExist: Boolean,
     val count: Int,
     val itemList: List<Item>,
-    val nextPageUrl: String,
+    val nextPageUrl: Any,
     val total: Int
 )
 
@@ -24,9 +24,11 @@ data class Item(
 )
 
 data class Data(
+    val actionUrl: String,
     val ad: Boolean,
     val adTrack: Any,
     val author: Author,
+    val autoPlay: Boolean,
     val brandWebsiteInfo: Any,
     val campaign: Any,
     val category: String,
@@ -36,22 +38,33 @@ data class Data(
     val cover: Cover,
     val dataType: String,
     val date: Long,
-    val description: String,
+    val description: Any,
     val descriptionEditor: String,
     val descriptionPgc: Any,
+    val detail: Detail,
     val duration: Int,
+    val expert: Boolean,
     val favoriteAdTrack: Any,
-    val font: String,
+    val follow: Any,
     val footer: Any,
+    val haveReward: Boolean,
     val header: Header,
+    val icon: String,
+    val iconType: String,
     val id: Int,
     val idx: Int,
     val ifLimitVideo: Boolean,
+    val ifNewest: Boolean,
+    val ifPgc: Boolean,
+    val ifShowNotificationIcon: Boolean,
+    val image: String,
     val itemList: List<ItemX>,
     val label: Any,
-    val labelList: List<Any>,
+    val labelList: Any,
     val lastViewTime: Any,
     val library: String,
+    val medalIcon: Boolean,
+    val newestEndTime: Any,
     val playInfo: List<PlayInfo>,
     val playUrl: String,
     val played: Boolean,
@@ -64,17 +77,22 @@ data class Data(
     val releaseTime: Long,
     val remark: Any,
     val resourceType: String,
+    val rightText: String,
     val searchWeight: Int,
+    val shade: Boolean,
     val shareAdTrack: Any,
     val slogan: Any,
     val src: Any,
-    val subtitles: List<Any>,
+    val subTitle: Any,
+    val subtitles: List<Subtitle>,
+    val switchStatus: Boolean,
     val tags: List<Tag>,
     val text: String,
     val thumbPlayUrl: Any,
     val title: String,
     val titlePgc: Any,
     val type: String,
+    val uid: Int,
     val videoPosterBean: Any,
     val waterMarks: Any,
     val webAdTrack: Any,
@@ -109,8 +127,39 @@ data class Cover(
     val blurred: String,
     val detail: String,
     val feed: String,
-    val homepage: Any,
+    val homepage: String,
     val sharing: Any
+)
+
+data class Detail(
+    val actionUrl: String,
+    val adTrack: List<AdTrack>,
+    val adaptiveImageUrls: String,
+    val adaptiveUrls: String,
+    val canSkip: Boolean,
+    val categoryId: Int,
+    val countdown: Boolean,
+    val cycleCount: Int,
+    val description: String,
+    val displayCount: Int,
+    val displayTimeDuration: Int,
+    val icon: String,
+    val id: Int,
+    val ifLinkage: Boolean,
+    val imageUrl: String,
+    val iosActionUrl: String,
+    val linkageAdId: Int,
+    val loadingMode: Int,
+    val openSound: Boolean,
+    val position: Int,
+    val showActionButton: Boolean,
+    val showImage: Boolean,
+    val showImageTime: Int,
+    val timeBeforeSkip: Int,
+    val title: String,
+    val url: String,
+    val videoAdType: String,
+    val videoType: String
 )
 
 data class Header(
@@ -120,7 +169,7 @@ data class Header(
     val id: Int,
     val label: Any,
     val labelList: Any,
-    val rightText: Any,
+    val rightText: String,
     val subTitle: Any,
     val subTitleFont: Any,
     val textAlign: String,
@@ -148,6 +197,11 @@ data class Provider(
     val alias: String,
     val icon: String,
     val name: String
+)
+
+data class Subtitle(
+    val type: String,
+    val url: String
 )
 
 data class Tag(
@@ -184,9 +238,19 @@ data class Shield(
     val shielded: Boolean
 )
 
+data class AdTrack(
+    val clickUrl: String,
+    val id: Int,
+    val monitorPositions: String,
+    val needExtraParams: List<String>,
+    val organization: String,
+    val playUrl: String,
+    val viewUrl: String
+)
+
 data class DataX(
     val actionUrl: String,
-    val adTrack: List<AdTrack>,
+    val adTrack: List<AdTrackX>,
     val autoPlay: Boolean,
     val dataType: String,
     val description: String,
@@ -196,11 +260,10 @@ data class DataX(
     val label: Label,
     val labelList: List<LabelX>,
     val shade: Boolean,
-    val text: String,
     val title: String
 )
 
-data class AdTrack(
+data class AdTrackX(
     val clickUrl: String,
     val id: Int,
     val monitorPositions: String,

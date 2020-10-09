@@ -7,7 +7,7 @@ import com.example.openeyes.api.ApiCallback
 import com.example.openeyes.api.AppApiService
 import com.example.openeyes.api.NetworkPortal
 import com.example.openeyes.databean.Data
-import com.example.openeyes.databean.HomeHotListRes
+import com.example.openeyes.databean.HomeFaxianListRes
 import com.example.openeyes.databean.Item
 import retrofit2.Call
 import retrofit2.Response
@@ -19,10 +19,10 @@ public class FaxianViewModel : ViewModel() {
 
     fun getfaxianList(){
         NetworkPortal.getService(AppApiService::class.java)?.getfaxianDataList()
-            ?.enqueue(object : ApiCallback<HomeHotListRes?>() {
+            ?.enqueue(object : ApiCallback<HomeFaxianListRes?>() {
                 override fun onSuccessful(
-                    call: Call<HomeHotListRes?>,
-                    response: Response<HomeHotListRes?>
+                    call: Call<HomeFaxianListRes?>,
+                    response: Response<HomeFaxianListRes?>
                 ) {
                     Log.d("onSuccessful", "请求成功了！")
                     if (response.body() == null) {

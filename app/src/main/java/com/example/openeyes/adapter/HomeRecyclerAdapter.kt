@@ -60,10 +60,18 @@ class HomeRecyclerAdapter(
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(holder.banner_rv)
         } else if (holder is HotTypeViewHolder) {
+            if (mDataList.size == 0) {
+                return
+            }
+            if (mDataList.get(position).type == "specialSquareCardCollection") {
+                if (mDataList.get(position).data.dataType == "ItemCollection") {
+                    dataList = mDataList.get(position).data.itemList
+                }
+            }
             val layoutManager = GridLayoutManager(mContext, 2)
             layoutManager.orientation = GridLayoutManager.HORIZONTAL
             holder.hottype_rv.layoutManager = layoutManager
-            holder.hottype_rv.adapter = HomeHotTypeAdapter(mContext, mDataList)
+            holder.hottype_rv.adapter = HomeHotTypeAdapter(mContext, dataList)
         }
     }
 

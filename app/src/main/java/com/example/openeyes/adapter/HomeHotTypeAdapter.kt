@@ -1,6 +1,7 @@
 package com.example.openeyes.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,18 +12,24 @@ import com.bumptech.glide.Glide
 import com.example.openeyes.R
 import com.example.openeyes.databean.Item
 import com.example.openeyes.databean.ItemX
+import kotlin.time.days
 
 /**
  * @data on 2020/9/28 10:44 AM
  * @auther
  * @describe
  */
-class HomeHotTypeAdapter(context: Context, data: List<Item>?) : RecyclerView.Adapter<HomeHotTypeAdapter.MyViewHolder>() {
+class HomeHotTypeAdapter(context: Context, data: List<ItemX>?) :
+    RecyclerView.Adapter<HomeHotTypeAdapter.MyViewHolder>() {
     private val context: Context? = context
-    private val dataList: List<Item>? = data
+    private val dataList: List<ItemX>? = data
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeHotTypeAdapter.MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_home_hottype_item,parent,false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): HomeHotTypeAdapter.MyViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recycler_home_hottype_item, parent, false)
         return MyViewHolder(view)
     }
 
@@ -31,9 +38,9 @@ class HomeHotTypeAdapter(context: Context, data: List<Item>?) : RecyclerView.Ada
     override fun onBindViewHolder(holder: HomeHotTypeAdapter.MyViewHolder, position: Int) {
         var url: String? = null
         var title: String? = null
-        if (dataList?.get(position)?.type == "video"){
-            url = dataList.get(position).data.author.icon
-            title = dataList.get(position).data.category
+        if (dataList?.get(position)?.type == "squareCardOfCategory") {
+            url = dataList?.get(position).data.image
+            title = dataList.get(position).data.title
         }
         if (context != null) {
             Glide.with(context).load(url).into(holder.hottype_iv)
