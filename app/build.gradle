@@ -64,4 +64,6 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
     //方法数+类数>65536解决办法
     implementation 'com.android.support:multidex:1.0.3'
+    //图片圆角设置
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }

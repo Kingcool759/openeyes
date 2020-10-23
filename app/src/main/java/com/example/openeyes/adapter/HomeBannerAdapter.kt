@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.openeyes.R
 import com.example.openeyes.databean.Item
 import com.example.openeyes.databean.ItemX
+import com.makeramen.roundedimageview.RoundedImageView
 
 /**
  * @data on 2020/9/28 10:45 AM
@@ -45,6 +46,6 @@ class HomeBannerAdapter(
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val banner_iv: ImageView = itemView.findViewById(R.id.banner_img)
+        val banner_iv: RoundedImageView = itemView.findViewById(R.id.banner_img)
     }
 }

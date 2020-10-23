@@ -11,11 +11,11 @@ import com.example.openeyes.R
 import com.example.openeyes.databean.Data
 
 /**
- * @data on 2020/9/28 10:44 AM
- * @auther armStrong
+ * @data on 2020/10/23 2:46 PM
+ * @auther
  * @describe
  */
-class HomeHotTypeAdapter(val context: Context, private val data: Data) :
+class HomeSubjectAdapter(val context: Context, private val data: Data) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -45,19 +45,19 @@ class HomeHotTypeAdapter(val context: Context, private val data: Data) :
         }else if (holder is TypeItemViewHolder){
             val dataList = data.itemList
             val layoutManager = GridLayoutManager(context, 2)
-            layoutManager.orientation = GridLayoutManager.HORIZONTAL
-            holder.recycler_home_type_hottype.layoutManager = layoutManager
-            holder.recycler_home_type_hottype.adapter = HotTypeItemAdapter(context, dataList)
+            layoutManager.orientation = GridLayoutManager.VERTICAL
+            holder.recycler_home_type_subtype.layoutManager = layoutManager
+            holder.recycler_home_type_subtype.adapter = SubjectItemAdapter(context, dataList)
         }
     }
 
     inner class TypeTitleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val home_type_title:TextView = itemView.findViewById(R.id.home_type_title)
-        val home_type_all:TextView = itemView.findViewById(R.id.home_type_all)
+        val home_type_title: TextView = itemView.findViewById(R.id.home_type_title)
+        val home_type_all: TextView = itemView.findViewById(R.id.home_type_all)
     }
 
     inner class TypeItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val recycler_home_type_hottype:RecyclerView = itemView.findViewById(R.id.home_item_recycler)
+        val recycler_home_type_subtype: RecyclerView = itemView.findViewById(R.id.home_item_recycler)
     }
 
     override fun getItemViewType(position: Int): Int {

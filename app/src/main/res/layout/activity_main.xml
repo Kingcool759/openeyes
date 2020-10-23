@@ -12,11 +12,13 @@
         android:id="@+id/mContainerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/mBottomNav"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
+        app:layout_constraintTop_toBottomOf="@id/mContainerView"
         app:layout_constraintBottom_toTopOf="@+id/mBottomNav"
+        android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/gray"
@@ -25,7 +27,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/mBottomNav"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:clickable="true"
         android:focusable="true"
         app:elevation="0dp"

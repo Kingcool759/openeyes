@@ -38,16 +38,14 @@ class FaxianFragment : Fragment() {
 
         viewModel.getfaxianList()
         getDataCallback()
-        setHomeRecycler()
 
     }
 
     private fun getDataCallback() {
         viewModel.mHomeList.observe(viewLifecycleOwner, Observer {
             dataList.addAll(it)
-            home_recycler.adapter?.notifyDataSetChanged()
+            setHomeRecycler()
         })
-
     }
 
 

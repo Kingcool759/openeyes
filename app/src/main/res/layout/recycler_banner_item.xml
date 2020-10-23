@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView
-    android:id="@+id/banner_img"
+<com.makeramen.roundedimageview.RoundedImageView android:id="@+id/banner_img"
     android:layout_margin="5dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:riv_corner_radius="5dp"
     android:layout_width="300dp"
-    android:layout_height="250dp" />
+    android:scaleType="center"
+    android:layout_height="200dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" />

@@ -11,46 +11,37 @@ import com.example.openeyes.databean.ItemX
 
 /**
  * @data on 2020/9/27 2:53 PM
- * @auther
- * @describe
+ * @auther armStrong
+ * @describe 发现页面：RecyclerView实现多ViewType布局
  */
-class HomeRecyclerAdapter(
-    context: Context,
-    dataList: ArrayList<Item>
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    //上下文环境+数据源
-    private val mContext: Context = context
-    private val mDataList: ArrayList<Item> = dataList
+class HomeRecyclerAdapter(private val mContext: Context, private val mDataList: ArrayList<Item>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    //设置ViewType用
-    private val BANNER: Int = 0
-    private val HOT_TYPE: Int = 1
-
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): RecyclerView.ViewHolder {
-        if (viewType == BANNER) {
-            val view =
-                LayoutInflater.from(parent.context).inflate(R.layout.recycler_banner, parent, false)
-            return BannerViewHolder(view)
-        } else {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == 0) {
             val view =
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.recycler_home_hottype, parent, false)
-            return HotTypeViewHolder(view)
+                    .inflate(R.layout.recycler_banner, parent, false)
+            BannerViewHolder(view)
+        } else if (viewType == 1){
+            val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.home_item_recycler, parent, false)
+            HotTypeViewHolder(view)
+        }else{
+            val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.home_item_recycler, parent, false)
+            SubjectViewHolder(view)
         }
     }
 
+    override fun getItemCount(): Int = 3
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        var dataList: List<ItemX>? = null
-        if (mDataList.size == 0) {
-            return
-        }
+        var dataList: List<ItemX> = ArrayList()
         if (holder is BannerViewHolder) {
-            if (mDataList.get(position).type == "horizontalScrollCard") {
-                if (mDataList.get(position).data.dataType == "HorizontalScrollCard") {
-                    dataList = mDataList.get(position).data.itemList
+            if (mDataList[position].type == "horizontalScrollCard") {
+                if (mDataList[position].data.dataType == "HorizontalScrollCard") {
+                    dataList = mDataList[position].data.itemList
                 }
             }
             val layoutManager = LinearLayoutManager(mContext)
@@ -60,29 +51,26 @@ class HomeRecyclerAdapter(
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(holder.banner_rv)
         } else if (holder is HotTypeViewHolder) {
-            if (mDataList.size == 0) {
-                return
+            if (mDataList[position].type == "specialSquareCardCollection") {
+                val data = mDataList[position].data
+                val layoutManager = LinearLayoutManager(mContext)
+                layoutManager.orientation = LinearLayoutManager.VERTICAL
+                holder.hottype_rv.layoutManager = layoutManager
+                holder.hottype_rv.adapter = HomeHotTypeAdapter(mContext, data)
             }
-            if (mDataList.get(position).type == "specialSquareCardCollection") {
-                if (mDataList.get(position).data.dataType == "ItemCollection") {
-                    dataList = mDataList.get(position).data.itemList
-                }
+        } else if(holder is SubjectViewHolder){
+            if (mDataList[position].type == "columnCardList") {
+                val data = mDataList[position].data
+                val layoutManager = LinearLayoutManager(mContext)
+                layoutManager.orientation = LinearLayoutManager.VERTICAL
+                holder.subject_rv.layoutManager = layoutManager
+                holder.subject_rv.adapter = HomeSubjectAdapter(mContext, data)
             }
-            val layoutManager = GridLayoutManager(mContext, 2)
-            layoutManager.orientation = GridLayoutManager.HORIZONTAL
-            holder.hottype_rv.layoutManager = layoutManager
-            holder.hottype_rv.adapter = HomeHotTypeAdapter(mContext, dataList)
         }
     }
 
-    override fun getItemCount(): Int = 2
-
     override fun getItemViewType(position: Int): Int {
-        if (position == 0) {
-            return BANNER
-        } else {
-            return HOT_TYPE
-        }
+        return position;
     }
 
     inner class BannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -90,6 +78,10 @@ class HomeRecyclerAdapter(
     }
 
     inner class HotTypeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val hottype_rv: RecyclerView = itemView.findViewById(R.id.home_hottype_recycler)
+        val hottype_rv: RecyclerView = itemView.findViewById(R.id.home_item_recycler)
+    }
+
+    inner class SubjectViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
+        val subject_rv: RecyclerView = itemView.findViewById(R.id.home_item_recycler)
     }
 }

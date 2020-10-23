@@ -61,5 +61,6 @@ class HomeFragment : Fragment() {
         adapter = TabViewPagerAdapter(childFragmentManager, list_fragment!!, list_title!!)
         viewpager.adapter = adapter
         tablayout.setupWithViewPager(viewpager)
+        viewpager.offscreenPageLimit = 3  //设置预加载页面数量，大于则销毁多的
     }
 }

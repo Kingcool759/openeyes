@@ -1,7 +1,5 @@
 package com.example.openeyes.databean
 
-import com.example.openeyes.base.BaseResponse
-
 /**
  * @data on 2020/9/27 3:54 PM
  * @auther
