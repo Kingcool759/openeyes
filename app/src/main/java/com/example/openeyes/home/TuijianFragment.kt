@@ -14,7 +14,7 @@ class TuijianFragment : Fragment() {
         fun newInstance() = TuijianFragment()
     }
 
-    private lateinit var viewModel: TuijianViewModel
+    private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +25,7 @@ class TuijianFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(TuijianViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

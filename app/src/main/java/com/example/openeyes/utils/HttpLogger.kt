@@ -1,4 +1,4 @@
-package com.example.openeyes.tools
+package com.example.openeyes.utils
 
 import android.util.Log
 import okhttp3.logging.HttpLoggingInterceptor

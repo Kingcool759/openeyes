@@ -1,4 +1,4 @@
-package com.example.openeyes.home
+package com.example.openeyes.message
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -6,29 +6,27 @@ import androidx.lifecycle.ViewModel
 import com.example.openeyes.api.ApiCallback
 import com.example.openeyes.api.AppApiService
 import com.example.openeyes.api.NetworkPortal
-import com.example.openeyes.databean.Data
-import com.example.openeyes.databean.HomeFaxianListRes
-import com.example.openeyes.databean.Item
+import com.example.openeyes.databean.Message
+import com.example.openeyes.databean.MessageTuisongListRes
 import retrofit2.Call
 import retrofit2.Response
 
-public class FaxianViewModel : ViewModel() {
+class MessageViewModel : ViewModel() {
+    //推送
+    val mMessageTuisongList: MutableLiveData<List<Message>> = MutableLiveData()
 
-    //热门
-    var mHomeList: MutableLiveData<List<Item>> = MutableLiveData()
-
-    fun getfaxianList(){
-        NetworkPortal.getService(AppApiService::class.java)?.getfaxianDataList()
-            ?.enqueue(object : ApiCallback<HomeFaxianListRes?>() {
+    fun getTuisongList(){
+        NetworkPortal.getService(AppApiService::class.java)?.gettuisongDataList()
+            ?.enqueue(object : ApiCallback<MessageTuisongListRes?>() {
                 override fun onSuccessful(
-                    call: Call<HomeFaxianListRes?>,
-                    response: Response<HomeFaxianListRes?>
+                    call: Call<MessageTuisongListRes?>,
+                    response: Response<MessageTuisongListRes?>
                 ) {
                     Log.d("onSuccessful", "请求成功了！")
                     if (response.body() == null) {
                         return
                     } else {
-                        mHomeList.value = (response.body()!!.itemList)
+                        mMessageTuisongList.value = (response.body()!!.messageList)
                     }
                 }
 

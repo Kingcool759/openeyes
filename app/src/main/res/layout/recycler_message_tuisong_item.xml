@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingConstraints">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/eyesImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/eyes_icon"
+        android:layout_marginTop="10dp"
+        app:civ_border_color="@color/gray"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/messageTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/messageTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:maxLength="21"
+        android:layout_marginLeft="10dp"
+        android:text="吉卜力第三波福利大放送，300 张高清壁纸等你收！"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toRightOf="@+id/eyesImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/sward"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@mipmap/sward_black"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/messageContent"
+        android:layout_marginRight="10dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/messageTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:text="14:30"
+        app:layout_constraintLeft_toRightOf="@id/eyesImage"
+        app:layout_constraintTop_toBottomOf="@id/messageTitle" />
+
+    <TextView
+        android:id="@+id/messageContent"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:minLines="1"
+        android:maxLines="2"
+        android:maxLength="40"
+        android:maxHeight="2dp"
+        android:layout_marginLeft="10dp"
+        android:text="收录了「哈尔的移动城堡」, 「幽灵公主」,「猫的报恩」"
+        android:textSize="12sp"
+        android:ellipsize="end"
+        app:layout_constraintLeft_toRightOf="@id/eyesImage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@id/messageTime" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

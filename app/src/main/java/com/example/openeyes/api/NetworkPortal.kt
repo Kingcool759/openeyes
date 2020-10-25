@@ -1,6 +1,6 @@
 package com.example.openeyes.api
 
-import com.example.openeyes.tools.HttpLogger
+import com.example.openeyes.utils.HttpLogger
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
