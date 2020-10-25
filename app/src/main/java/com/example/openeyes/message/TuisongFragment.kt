@@ -14,6 +14,8 @@ import com.example.openeyes.adapter.DividerNormalDecoration
 import com.example.openeyes.adapter.MessageRecyclerAdapter
 import com.example.openeyes.databean.Message
 import com.example.openeyes.databinding.TuisongFragmentBinding
+import com.scwang.smart.refresh.footer.ClassicsFooter
+import com.scwang.smart.refresh.header.ClassicsHeader
 import kotlinx.android.synthetic.main.faxian_fragment.*
 import kotlinx.android.synthetic.main.tuisong_fragment.*
 
@@ -37,6 +39,7 @@ class TuisongFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel.getTuisongList()
         getDataCallback()
+        setSmartRefreshLayout()
     }
 
     private fun getDataCallback() {
@@ -53,6 +56,21 @@ class TuisongFragment : Fragment() {
         context?.let {
             tuisongRecycler.adapter = MessageRecyclerAdapter(it, dataList)
             tuisongRecycler.addItemDecoration(DividerNormalDecoration(context))
+        }
+    }
+    //设置SmartRefreshLayout
+    private fun setSmartRefreshLayout(){
+        tuisongRefreshLayout.setRefreshHeader(ClassicsHeader(context)); //经典头
+        tuisongRefreshLayout.setRefreshFooter(ClassicsFooter(context)); //经典尾
+//        refreshLayout.setRefreshHeader(BezierRadarHeader(context).setEnableHorizontalDrag(true)) //雷达刷新头
+//        refreshLayout.setRefreshHeader(new MaterialHeader(this));//谷歌刷新头
+//        refreshLayout.setRefreshHeader(new TwoLevelHeader(this));//二级刷新头
+//        refreshLayout.setRefreshFooter(BallPulseFooter(context).setSpinnerStyle(SpinnerStyle.Scale)) //脉冲尾
+        tuisongRefreshLayout.setOnRefreshListener { refreshlayout ->
+            refreshlayout.finishRefresh(1000 /*,false*/) //传入false表示刷新失败
+        }
+        tuisongRefreshLayout.setOnLoadMoreListener { refreshlayout ->
+            refreshlayout.finishLoadMore(1000 /*,false*/) //传入false表示加载失败
         }
     }
 }
