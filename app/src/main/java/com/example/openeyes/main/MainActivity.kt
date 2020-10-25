@@ -75,15 +75,15 @@ class MainActivity : AppCompatActivity() {
                     showAndHideFragment(mFragments[0], mFragments[mPreFragmentFlag])
                     mPreFragmentFlag = 0
                 }
-                R.id.wechat -> {
+                R.id.shequ -> {
                     showAndHideFragment(mFragments[1], mFragments[mPreFragmentFlag])
                     mPreFragmentFlag = 1
                 }
-                R.id.system -> {
+                R.id.message -> {
                     showAndHideFragment(mFragments[2], mFragments[mPreFragmentFlag])
                     mPreFragmentFlag = 2
                 }
-                R.id.setting -> {
+                R.id.mine -> {
                     showAndHideFragment(mFragments[3], mFragments[mPreFragmentFlag])
                     mPreFragmentFlag = 3
                 }

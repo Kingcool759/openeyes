@@ -2,8 +2,8 @@
     <string name="app_name">openeyes</string>
 
     <string name="bottom_item_home">首页</string>
-    <string name="bottom_item_wechat">社区</string>
-    <string name="bottom_item_project">发布</string>
-    <string name="bottom_item_system">消息</string>
-    <string name="bottom_item_setting">我的</string>
+    <string name="bottom_item_shequ">社区</string>
+    <string name="bottom_item_fabu">发布</string>
+    <string name="bottom_item_message">通知</string>
+    <string name="bottom_item_mine">我的</string>
 </resources>

@@ -8,10 +8,10 @@
         android:title="@string/bottom_item_home"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/wechat"
+        android:id="@+id/shequ"
         android:enabled="true"
-        android:icon="@drawable/select_bottom_nac_wechat"
-        android:title="@string/bottom_item_wechat"
+        android:icon="@drawable/select_bottom_nac_shequ"
+        android:title="@string/bottom_item_shequ"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/project"
@@ -20,16 +20,16 @@
         app:showAsAction="ifRoom"
         android:title="@null" />
     <item
-        android:id="@+id/system"
+        android:id="@+id/message"
         android:enabled="true"
-        android:icon="@drawable/select_bottom_nac_system"
-        android:title="@string/bottom_item_system"
+        android:icon="@drawable/select_bottom_nac_message"
+        android:title="@string/bottom_item_message"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/setting"
+        android:id="@+id/mine"
         android:enabled="true"
-        android:icon="@drawable/select_bottom_nac_setting"
-        android:title="@string/bottom_item_setting"
+        android:icon="@drawable/select_bottom_nac_mine"
+        android:title="@string/bottom_item_mine"
         app:showAsAction="ifRoom" />
 
 </menu>
