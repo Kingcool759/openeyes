@@ -11,6 +11,8 @@ import com.example.openeyes.fragment.CommunityFrgment
 import com.example.openeyes.fragment.HomeFragment
 import com.example.openeyes.fragment.MessageFragment
 import com.example.openeyes.fragment.MineFragment
+import com.gyf.immersionbar.ImmersionBar
+import com.gyf.immersionbar.ktx.setFitsSystemWindows
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -28,7 +30,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        //沉浸式状态栏
+        ImmersionBar.with(this).statusBarColor(R.color.transparent)
+            .fitsSystemWindows(true).init()
+        //业务逻辑
         initFragment()
         selectFragment()
 

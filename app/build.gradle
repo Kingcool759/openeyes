@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.openeyes"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -66,4 +66,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     //图片圆角设置
     implementation 'com.makeramen:roundedimageview:2.3.0'
+    //沉浸式状态栏-指定状态栏颜色
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+    implementation 'com.gyf.immersionbar:immersionbar-ktx:3.0.0'
 }

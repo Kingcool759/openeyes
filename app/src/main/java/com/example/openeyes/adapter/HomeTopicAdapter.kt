@@ -11,11 +11,11 @@ import com.example.openeyes.R
 import com.example.openeyes.databean.Data
 
 /**
- * @data on 2020/10/23 2:46 PM
- * @auther armStrong
+ * @data on 2020/10/23 3:42 PM
+ * @auther
  * @describe
  */
-class HomeSubjectAdapter(val context: Context, private val data: Data) :
+class HomeTopicAdapter(val context: Context, private val data: Data) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(
