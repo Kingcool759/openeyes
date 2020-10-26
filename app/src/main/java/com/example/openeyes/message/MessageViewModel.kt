@@ -7,7 +7,7 @@ import com.example.openeyes.api.ApiCallback
 import com.example.openeyes.api.AppApiService
 import com.example.openeyes.api.NetworkPortal
 import com.example.openeyes.databean.Message
-import com.example.openeyes.databean.MessageTuisongListRes
+import com.example.openeyes.databean.MessageDataBean
 import retrofit2.Call
 import retrofit2.Response
 
@@ -17,10 +17,10 @@ class MessageViewModel : ViewModel() {
 
     fun getTuisongList(){
         NetworkPortal.getService(AppApiService::class.java)?.gettuisongDataList()
-            ?.enqueue(object : ApiCallback<MessageTuisongListRes?>() {
+            ?.enqueue(object : ApiCallback<MessageDataBean?>() {
                 override fun onSuccessful(
-                    call: Call<MessageTuisongListRes?>,
-                    response: Response<MessageTuisongListRes?>
+                    call: Call<MessageDataBean?>,
+                    response: Response<MessageDataBean?>
                 ) {
                     Log.d("onSuccessful", "请求成功了！")
                     if (response.body() == null) {

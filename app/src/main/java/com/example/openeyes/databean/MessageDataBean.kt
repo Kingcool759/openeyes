@@ -2,10 +2,10 @@ package com.example.openeyes.databean
 
 /**
  * @data on 2020/10/25 4:40 PM
- * @auther
- * @describe
+ * @auther armStrong
+ * @describe 通知
  */
-data class MessageTuisongListRes(
+data class MessageDataBean(
     val messageList: List<Message>,
     val nextPageUrl: String,
     val updateTime: Long

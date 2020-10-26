@@ -2,10 +2,10 @@ package com.example.openeyes.databean
 
 /**
  * @data on 2020/9/27 3:54 PM
- * @auther
- * @describe
+ * @auther armStrong
+ * @describe 首页
  */
-data class HomeFaxianListRes(
+data class HomeDataBean(
     val adExist: Boolean,
     val count: Int,
     val itemList: List<Item>,
@@ -18,10 +18,12 @@ data class Item(
     val `data`: Data,
     val id: Int,
     val tag: Any,
+    val trackingData: Any,
     val type: String
 )
 
 data class Data(
+    val `content`: Content,
     val actionUrl: String,
     val ad: Boolean,
     val adTrack: Any,
@@ -83,6 +85,7 @@ data class Data(
     val src: Any,
     val subTitle: Any,
     val subtitles: List<Subtitle>,
+    val titleList: List<String>,
     val switchStatus: Boolean,
     val tags: List<Tag>,
     val text: String,
@@ -95,6 +98,15 @@ data class Data(
     val waterMarks: Any,
     val webAdTrack: Any,
     val webUrl: WebUrl
+)
+
+data class Content(
+    val adIndex: Int,
+    val `data`: DataX,
+    val id: Int,
+    val tag: Any,
+    val trackingData: Any,
+    val type: String
 )
 
 data class Author(
@@ -163,14 +175,19 @@ data class Detail(
 data class Header(
     val actionUrl: String,
     val cover: Any,
-    val font: String,
+    val description: String,
+    val font: Any,
+    val icon: String,
+    val iconType: String,
     val id: Int,
     val label: Any,
     val labelList: Any,
     val rightText: String,
+    val showHateVideo: Boolean,
     val subTitle: Any,
     val subTitleFont: Any,
     val textAlign: String,
+    val time: Long,
     val title: String
 )
 
@@ -247,18 +264,57 @@ data class AdTrack(
 )
 
 data class DataX(
-    val actionUrl: String,
-    val adTrack: List<AdTrackX>,
-    val autoPlay: Boolean,
+    val ad: Boolean,
+    val adTrack: List<Any>,
+    val author: Author,
+    val brandWebsiteInfo: Any,
+    val campaign: Any,
+    val category: String,
+    val collected: Boolean,
+    val consumption: Consumption,
+    val cover: Cover,
     val dataType: String,
+    val date: Long,
     val description: String,
-    val header: HeaderX,
+    val descriptionEditor: String,
+    val descriptionPgc: Any,
+    val duration: Int,
+    val favoriteAdTrack: Any,
     val id: Int,
-    val image: String,
-    val label: Label,
-    val labelList: List<LabelX>,
-    val shade: Boolean,
-    val title: String
+    val idx: Int,
+    val ifLimitVideo: Boolean,
+    val label: Any,
+    val labelList: List<Any>,
+    val lastViewTime: Any,
+    val library: String,
+    val playInfo: List<PlayInfo>,
+    val playUrl: String,
+    val played: Boolean,
+    val playlists: Any,
+    val promotion: Any,
+    val provider: Provider,
+    val reallyCollected: Boolean,
+    val recallSource: Any,
+    val recall_source: Any,
+    val releaseTime: Long,
+    val remark: Any,
+    val resourceType: String,
+    val searchWeight: Int,
+    val shareAdTrack: Any,
+    val slogan: Any,
+    val src: Any,
+    val subtitles: List<Any>,
+    val tags: List<Tag>,
+    val thumbPlayUrl: Any,
+    val title: String,
+    val titlePgc: Any,
+    val type: String,
+    val titleList: List<String>,
+    val videoPosterBean: Any,
+    val waterMarks: Any,
+    val webAdTrack: Any,
+    val webUrl: WebUrl,
+    val image: String
 )
 
 data class AdTrackX(

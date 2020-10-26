@@ -4,28 +4,26 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.openeyes.R
-import com.example.openeyes.databean.Item
 import com.example.openeyes.databean.ItemX
 import com.makeramen.roundedimageview.RoundedImageView
 
 /**
- * @data on 2020/9/28 10:45 AM
+ * @data on 2020/10/26 9:57 AM
  * @auther
  * @describe
  */
-class HomeBannerAdapter(
+class HomeTuijianAdapter (
     val context: Context,
     val dataList: List<ItemX>
-) : RecyclerView.Adapter<HomeBannerAdapter.MyViewHolder>() {
+) : RecyclerView.Adapter<HomeTuijianAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): HomeBannerAdapter.MyViewHolder {
+    ): HomeTuijianAdapter.MyViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.recycler_banner_item, parent, false)
         return MyViewHolder(view)
@@ -33,7 +31,7 @@ class HomeBannerAdapter(
 
     override fun getItemCount(): Int = dataList!!.size
 
-    override fun onBindViewHolder(holder: HomeBannerAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HomeTuijianAdapter.MyViewHolder, position: Int) {
         var url: String? = null
         if (dataList[position].type == "banner") {
             url = dataList[position].data.image

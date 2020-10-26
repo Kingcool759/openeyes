@@ -1,7 +1,7 @@
 package com.example.openeyes.api
 
-import com.example.openeyes.databean.HomeFaxianListRes
-import com.example.openeyes.databean.MessageTuisongListRes
+import com.example.openeyes.databean.HomeDataBean
+import com.example.openeyes.databean.MessageDataBean
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -12,13 +12,22 @@ import retrofit2.http.GET
  */
 interface AppApiService {
     /**
-     * 获取体系-导航数据
+     * 首页
      */
-//    @GET(AppApi.homt_hotList)
-//    fun getHotDataList(): Call<HomeHotListRes>
+
     @GET(AppApi.home_faxian_List)
-    fun getfaxianDataList(): Call<HomeFaxianListRes>
+    fun getfaxianDataList(): Call<HomeDataBean>
+
+    @GET(AppApi.home_tuijian_List)
+    fun gettuijianDataList(): Call<HomeDataBean>
+
+    @GET(AppApi.home_ribao_List)
+    fun getribaoDataList(): Call<HomeDataBean>
+
+    /**
+     * 通知
+     */
 
     @GET(AppApi.message_tuisong_List)
-    fun gettuisongDataList(): Call<MessageTuisongListRes>
+    fun gettuisongDataList(): Call<MessageDataBean>
 }

@@ -13,6 +13,7 @@
     <color name="gray">#707070</color>
     <color name="blue">#2167F3</color>
     <color name="black">#D3000000</color>
+    <color name="lightblack">#AD000000</color>
     <color name="transparent">#2000</color>
 
     <color name="yellow">#FFFB07</color>

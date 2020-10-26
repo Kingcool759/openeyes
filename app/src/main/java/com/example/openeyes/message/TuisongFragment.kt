@@ -10,13 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.openeyes.R
-import com.example.openeyes.adapter.DividerNormalDecoration
+import com.example.openeyes.adapter.DividerTuisongDecoration
 import com.example.openeyes.adapter.MessageRecyclerAdapter
 import com.example.openeyes.databean.Message
 import com.example.openeyes.databinding.TuisongFragmentBinding
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
-import kotlinx.android.synthetic.main.faxian_fragment.*
 import kotlinx.android.synthetic.main.tuisong_fragment.*
 
 class TuisongFragment : Fragment() {
@@ -45,17 +44,17 @@ class TuisongFragment : Fragment() {
     private fun getDataCallback() {
         viewModel.mMessageTuisongList.observe(viewLifecycleOwner, Observer {
             dataList.addAll(it)
-            setHomeRecycler()
+            setRecycler()
         })
     }
     //设置recycler
-    private fun setHomeRecycler() {
+    private fun setRecycler() {
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         tuisongRecycler.layoutManager = layoutManager
         context?.let {
             tuisongRecycler.adapter = MessageRecyclerAdapter(it, dataList)
-            tuisongRecycler.addItemDecoration(DividerNormalDecoration(context))
+            tuisongRecycler.addItemDecoration(DividerTuisongDecoration(context!!))
         }
     }
     //设置SmartRefreshLayout

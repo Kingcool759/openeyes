@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.openeyes.R
+import com.example.openeyes.adapter.DividerNormalDecoration
 import com.example.openeyes.adapter.HomeRecyclerAdapter
 import com.example.openeyes.databean.Item
 import com.example.openeyes.databinding.FaxianFragmentBinding
@@ -46,18 +48,19 @@ class FaxianFragment : Fragment() {
     private fun getDataCallback() {
         viewModel.mHomeFaxianList.observe(viewLifecycleOwner, Observer {
             dataList.addAll(it)
-            setHomeRecycler()
+            setRecycler()
         })
     }
 
 
     //设置recycler
-    private fun setHomeRecycler() {
+    private fun setRecycler() {
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         home_recycler.layoutManager = layoutManager
         context?.let {
             home_recycler.adapter = HomeRecyclerAdapter(it, dataList)
+            home_recycler.addItemDecoration(DividerNormalDecoration(context!!))
         }
     }
     //设置SmartRefreshLayout
