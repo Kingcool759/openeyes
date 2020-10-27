@@ -1,4 +1,4 @@
-package com.example.openeyes.main
+package com.example.openeyes.activity
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -12,7 +12,6 @@ import com.example.openeyes.fragment.HomeFragment
 import com.example.openeyes.fragment.MessageFragment
 import com.example.openeyes.fragment.MineFragment
 import com.gyf.immersionbar.ImmersionBar
-import com.gyf.immersionbar.ktx.setFitsSystemWindows
 import kotlinx.android.synthetic.main.activity_main.*
 
 

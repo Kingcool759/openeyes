@@ -15,33 +15,5 @@ import com.makeramen.roundedimageview.RoundedImageView
  * @auther
  * @describe
  */
-class HomeTuijianAdapter (
-    val context: Context,
-    val dataList: List<ItemX>
-) : RecyclerView.Adapter<HomeTuijianAdapter.MyViewHolder>() {
-
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): HomeTuijianAdapter.MyViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recycler_banner_item, parent, false)
-        return MyViewHolder(view)
-    }
-
-    override fun getItemCount(): Int = dataList!!.size
-
-    override fun onBindViewHolder(holder: HomeTuijianAdapter.MyViewHolder, position: Int) {
-        var url: String? = null
-        if (dataList[position].type == "banner") {
-            url = dataList[position].data.image
-        }
-        if (context != null) {
-            Glide.with(context).load(url).into(holder.banner_iv)
-        }
-    }
-
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val banner_iv: RoundedImageView = itemView.findViewById(R.id.banner_img)
-    }
+class HomeTuijianAdapter {
 }

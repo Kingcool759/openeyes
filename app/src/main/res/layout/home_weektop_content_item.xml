@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingConstraints">
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/weekTop_image"
+        android:layout_width="175dp"
+        android:layout_height="110dp"
+        android:src="@drawable/bigworld"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:riv_corner_radius="5dp"
+        />
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/weekTop_image"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:id="@+id/weekTop_title"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="危险警告！你还在压抑着你的情绪吗？"
+        />
+
+    <TextView
+        android:id="@+id/weekTop_jing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#"
+        android:textSize="13sp"
+        app:layout_constraintLeft_toLeftOf="@id/weekTop_title"
+        app:layout_constraintBottom_toBottomOf="@id/weekTop_image"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:id="@+id/weekTop_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:text="影视"
+        app:layout_constraintLeft_toRightOf="@id/weekTop_jing"
+        app:layout_constraintBottom_toBottomOf="@id/weekTop_image"
+        android:layout_marginBottom="10dp"
+        />
+    <TextView
+        android:id="@+id/weekTop_jingxuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:text="  /  开眼精选"
+        app:layout_constraintLeft_toRightOf="@id/weekTop_category"
+        app:layout_constraintBottom_toBottomOf="@id/weekTop_image"
+        android:layout_marginBottom="10dp"
+        />
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/share_image"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

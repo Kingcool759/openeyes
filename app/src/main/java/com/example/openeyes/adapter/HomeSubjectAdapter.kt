@@ -13,7 +13,7 @@ import com.example.openeyes.databean.Data
 /**
  * @data on 2020/10/23 2:46 PM
  * @auther armStrong
- * @describe
+ * @describe 专题策划
  */
 class HomeSubjectAdapter(val context: Context, private val data: Data) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

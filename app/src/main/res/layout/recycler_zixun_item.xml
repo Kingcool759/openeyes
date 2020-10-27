@@ -18,7 +18,7 @@
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/zixun_bgImage"
                 android:layout_width="match_parent"
-                android:scaleType="centerCrop"
+                android:scaleType="center"
                 android:layout_height="wrap_content"
                 android:src="@drawable/sanxing" />
             <androidx.recyclerview.widget.RecyclerView

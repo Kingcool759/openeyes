@@ -10,7 +10,7 @@
         android:textColor="@color/lightblack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:textSize="13sp"
         android:text="本周最佳福利 | 第三波壁纸福利来了！300 张吉卜力高清壁纸等你收"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

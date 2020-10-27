@@ -38,7 +38,7 @@ data class Data(
     val cover: Cover,
     val dataType: String,
     val date: Long,
-    val description: Any,
+    val description: String,
     val descriptionEditor: String,
     val descriptionPgc: Any,
     val detail: Detail,

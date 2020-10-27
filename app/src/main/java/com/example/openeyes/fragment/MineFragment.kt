@@ -6,11 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.openeyes.R
-import com.example.openeyes.adapter.MineRecyclerAdapter
 import com.example.openeyes.viewmodel.MineViewModel
 import kotlinx.android.synthetic.main.mine_fragment.*
 
