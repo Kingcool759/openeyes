@@ -20,6 +20,7 @@ import com.makeramen.roundedimageview.RoundedImageView
  */
 class HomeRecyclerAdapter(private val mContext: Context, private val mDataList: ArrayList<Item>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    val snapHelper: SnapHelper = PagerSnapHelper()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == 0) {
@@ -35,11 +36,15 @@ class HomeRecyclerAdapter(private val mContext: Context, private val mDataList: 
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.home_item_recycler, parent, false)
             SubjectViewHolder(view)
-        } else if (viewType == 3 || viewType == 9) {
+        } else if (viewType == 3 || viewType == 5 || viewType == 11) {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.topictitle_home_recycler_item, parent, false)
             TypeTitleViewHolder(view)
-        } else if (viewType == 4 || viewType == 5 || viewType == 6 || viewType == 7 || viewType == 8) {
+        } else if (viewType == 4) {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.openeyes_special_banner_image, parent, false)
+            SpecialBannerViewHolder(view)
+        } else if (viewType == 6 || viewType == 7 || viewType == 8 || viewType == 9 || viewType == 10) {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.home_weektop_content_item, parent, false)
             WeekTopViewHolder(view)
@@ -64,8 +69,7 @@ class HomeRecyclerAdapter(private val mContext: Context, private val mDataList: 
             layoutManager.orientation = LinearLayoutManager.HORIZONTAL
             holder.banner_rv.layoutManager = layoutManager
             holder.banner_rv.adapter = dataList?.let { HomeBannerAdapter(mContext, it) }
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            holder.banner_rv.onFlingListener = null   //解决RecyclerView中用SnapHelper抛出异常：java.lang.IllegalStateException: An instance of OnFlingListener already set.
+            //解决RecyclerView中用SnapHelper抛出异常：java.lang.IllegalStateException: An instance of OnFlingListener already set.
             snapHelper.attachToRecyclerView(holder.banner_rv)
         } else if (holder is HotTypeViewHolder) {
             if (mDataList[position].type == "specialSquareCardCollection") {
@@ -88,6 +92,11 @@ class HomeRecyclerAdapter(private val mContext: Context, private val mDataList: 
                 holder.home_type_title.text = mDataList[position].data.text
                 holder.home_type_all.text = mDataList[position].data.rightText
             }
+        } else if (holder is SpecialBannerViewHolder) {
+            if (mDataList[position].type == "banner") {
+                val url = mDataList[position].data.image
+                Glide.with(mContext).load(url).into(holder.special_banner)
+            }
         } else if (holder is WeekTopViewHolder) {
             if (mDataList[position].type == "videoSmallCard") {
                 val url = mDataList[position].data.cover.feed
@@ -101,6 +110,14 @@ class HomeRecyclerAdapter(private val mContext: Context, private val mDataList: 
                 Glide.with(mContext).load(url).into(holder.topicImage)
                 holder.topicTitle.text = mDataList[position].data.title
                 holder.topicDes.text = mDataList[position].data.description
+                holder.topicCare.setOnClickListener {
+                    holder.topicCare.isSelected = !(holder.topicCare.isSelected)
+                    if (holder.topicCare.text == "已关注"){
+                        holder.topicCare.text = "加关注"
+                    }else{
+                        holder.topicCare.text = "已关注"
+                    }
+                }
             }
         }
     }
@@ -124,10 +141,15 @@ class HomeRecyclerAdapter(private val mContext: Context, private val mDataList: 
         val subject_rv: RecyclerView = itemView.findViewById(R.id.home_item_recycler)
     }
 
-    //  本周榜单-title-3 和推荐主题-title-10
+    //  本周榜单-title-3 、开眼专题-title-5 和 推荐主题-title-12
     inner class TypeTitleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val home_type_title: TextView = itemView.findViewById(R.id.home_type_title)
         val home_type_all: TextView = itemView.findViewById(R.id.home_type_all)
+    }
+
+    //  开眼专栏-4
+    inner class SpecialBannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val special_banner: RoundedImageView = itemView.findViewById(R.id.specialBanner)
     }
 
     //  本周榜单-4->8
@@ -142,5 +164,6 @@ class HomeRecyclerAdapter(private val mContext: Context, private val mDataList: 
         val topicImage: RoundedImageView = itemView.findViewById(R.id.topicImage)
         val topicTitle: TextView = itemView.findViewById(R.id.topicTitle)
         val topicDes: TextView = itemView.findViewById(R.id.topicDescription)
+        val topicCare: TextView = itemView.findViewById(R.id.tv_care)
     }
 }

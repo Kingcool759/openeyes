@@ -48,16 +48,17 @@
         app:layout_constraintTop_toBottomOf="@id/topicTitle" />
 
     <TextView
+        android:id="@+id/tv_care"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
-        android:background="@drawable/tv_care_style"
+        android:background="@drawable/tv_care_selector"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:paddingRight="10dp"
         android:paddingBottom="5dp"
-        android:text="+关注"
-        android:textColor="@color/black"
+        android:text="加关注"
+        android:textColor="@color/tv_care_textcolor_selector"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"

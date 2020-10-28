@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.example.openeyes.R
 import com.example.openeyes.adapter.TabViewPagerAdapter
 import com.example.openeyes.home.FaxianFragment
 import com.example.openeyes.home.RibaoFragment
 import com.example.openeyes.home.TuijianFragment
-import com.example.openeyes.viewmodel.HomeViewModel
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.home_fragment.*
 
@@ -19,8 +17,6 @@ class HomeFragment : Fragment() {
     private var list_fragment: ArrayList<Fragment>? = null
     private var list_title: ArrayList<String>? = null
     private var adapter: TabViewPagerAdapter? = null
-
-    private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +27,6 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         //tab+fragment
         initView()
         initTabAndPager()

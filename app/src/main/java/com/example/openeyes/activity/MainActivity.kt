@@ -1,18 +1,22 @@
 package com.example.openeyes.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.alibaba.android.arouter.launcher.ARouter
 import com.example.openeyes.R
+import com.example.openeyes.Router.RouterPath
 import com.example.openeyes.fragment.CommunityFrgment
 import com.example.openeyes.fragment.HomeFragment
 import com.example.openeyes.fragment.MessageFragment
 import com.example.openeyes.fragment.MineFragment
 import com.gyf.immersionbar.ImmersionBar
 import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.Route
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         sendImageView.setOnClickListener(View.OnClickListener {
             Toast.makeText(this,"fabu",Toast.LENGTH_SHORT).show()
+            ARouter.getInstance().build(RouterPath.login).navigation()
         })
     }
 

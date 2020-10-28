@@ -20,15 +20,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">  <!-- 忽略证书 https&http ，允许使用明文流量http -->
-        <activity android:name=".activity.SplashActivity"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activity.LoginActivity"></activity>
+        <!-- 忽略证书 https&http ，允许使用明文流量http -->
+        <activity
+            android:name=".activity.SplashActivity"
             android:theme="@style/entrance_LauncherTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.MainActivity" />
     </application>
 
 </manifest>

@@ -1,19 +1,16 @@
 package com.example.openeyes.fragment
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.openeyes.R
-import com.example.openeyes.viewmodel.MineViewModel
 import kotlinx.android.synthetic.main.mine_fragment.*
 
 class MineFragment : Fragment() {
 
-    private lateinit var viewModel: MineViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +22,6 @@ class MineFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MineViewModel::class.java)
         //点击事件处理
         onClick()
     }
