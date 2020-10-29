@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.openeyes.R
 import com.example.openeyes.databinding.TuijianFragmentBinding
+import com.hjq.toast.ToastUtils
 
 class TuijianFragment : Fragment() {
     private lateinit var binding: TuijianFragmentBinding
@@ -23,13 +24,12 @@ class TuijianFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel.getTuijianList()
+//        ToastUtils.show("接口请求失败！原因：请求的为eyepetizer官网api接口需要验签～")
     }
 }

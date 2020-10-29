@@ -5,6 +5,7 @@ import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.BuildConfig
 import com.alibaba.android.arouter.launcher.ARouter
+import com.hjq.toast.ToastUtils
 
 
 /**
@@ -23,5 +24,6 @@ class OpenEyesApplication : MultiDexApplication() {
         }
         ARouter.init(this)
         MultiDex.install(this) //必须
+        ToastUtils.init(this)
     }
 }

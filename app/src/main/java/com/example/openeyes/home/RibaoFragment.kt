@@ -2,6 +2,7 @@ package com.example.openeyes.home
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -35,7 +36,6 @@ class RibaoFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-
         return binding.root
     }
 
@@ -43,13 +43,16 @@ class RibaoFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel.getRibaoList()
         getDataCallback()
+        setRecyclerDivider()
         setSmartRefreshLayout()
+        setRecycler()
     }
 
     private fun getDataCallback() {
         viewModel.mHomeRibaoList.observe(viewLifecycleOwner, Observer {
+            //先把之前的Recycler中的数据清空，再重新填充数据
+            if (dataList.isNotEmpty()) dataList.clear()
             dataList.addAll(it)
-            setRecycler()
         })
     }
 
@@ -61,23 +64,25 @@ class RibaoFragment : Fragment() {
         ribaoRecycler.layoutManager = layoutManager
         context?.let {
             ribaoRecycler.adapter = HomeRibaoAdapter(it, dataList)
-            ribaoRecycler.addItemDecoration(DividerNormalDecoration(context!!))
         }
+    }
+    //设置recycler的分割线
+    private fun setRecyclerDivider() {
+        ribaoRecycler.addItemDecoration(DividerNormalDecoration(context!!))
     }
 
     //设置SmartRefreshLayout
-    private fun setSmartRefreshLayout(){
+    private fun setSmartRefreshLayout() {
         ribaoRefreshLayout.setRefreshHeader(ClassicsHeader(context)); //经典头
         ribaoRefreshLayout.setRefreshFooter(ClassicsFooter(context)); //经典尾
-//        refreshLayout.setRefreshHeader(BezierRadarHeader(context).setEnableHorizontalDrag(true)) //雷达刷新头
-//        refreshLayout.setRefreshHeader(new MaterialHeader(this));//谷歌刷新头
-//        refreshLayout.setRefreshHeader(new TwoLevelHeader(this));//二级刷新头
-//        refreshLayout.setRefreshFooter(BallPulseFooter(context).setSpinnerStyle(SpinnerStyle.Scale)) //脉冲尾
         ribaoRefreshLayout.setOnRefreshListener { refreshlayout ->
+            viewModel.getRibaoList()
+            // getDataCallback()  //自动触发观察者模式改变数据
+            ribaoRecycler.adapter!!.notifyDataSetChanged()
             refreshlayout.finishRefresh(1000 /*,false*/) //传入false表示刷新失败
         }
         ribaoRefreshLayout.setOnLoadMoreListener { refreshlayout ->
-            refreshlayout.finishLoadMore(1000 /*,false*/) //传入false表示加载失败
+            refreshlayout.finishLoadMore(500 /*,false*/) //传入false表示加载失败
         }
     }
 }

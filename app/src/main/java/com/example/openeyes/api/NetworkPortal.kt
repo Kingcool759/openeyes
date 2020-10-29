@@ -73,6 +73,8 @@ object NetworkPortal {
         var service: T? = null
         if (baseURL.isEmpty()) {
             service = buildRetrofit(AppApi.BaseURL)?.create(clazz)
+        }else{
+            service = buildRetrofit(baseURL)?.create(clazz)
         }
         return service
     }

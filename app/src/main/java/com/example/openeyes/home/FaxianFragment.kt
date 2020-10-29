@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,6 +16,7 @@ import com.example.openeyes.adapter.DividerNormalDecoration
 import com.example.openeyes.adapter.HomeRecyclerAdapter
 import com.example.openeyes.databean.Item
 import com.example.openeyes.databinding.FaxianFragmentBinding
+import com.hjq.toast.ToastUtils
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import kotlinx.android.synthetic.main.faxian_fragment.*
@@ -42,13 +44,15 @@ class FaxianFragment : Fragment() {
 
         viewModel.getFaxianList()
         getDataCallback()
+        setRecycler()
+        setRecyclerDivider()
         setSmartRefreshLayout()
     }
 
     private fun getDataCallback() {
         viewModel.mHomeFaxianList.observe(viewLifecycleOwner, Observer {
+            if (dataList.isNotEmpty()) dataList.clear()
             dataList.addAll(it)
-            setRecycler()
         })
     }
 
@@ -57,25 +61,27 @@ class FaxianFragment : Fragment() {
     private fun setRecycler() {
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
-        home_recycler.layoutManager = layoutManager
+        faxian_recycler.layoutManager = layoutManager
         context?.let {
-            home_recycler.adapter = HomeRecyclerAdapter(it, dataList)
-            home_recycler.addItemDecoration(DividerNormalDecoration(context!!))
+            faxian_recycler.adapter = HomeRecyclerAdapter(it, dataList)
         }
+    }
+    //设置recycler分割线
+    private fun setRecyclerDivider(){
+        faxian_recycler.addItemDecoration(DividerNormalDecoration(context!!))
     }
     //设置SmartRefreshLayout
     private fun setSmartRefreshLayout(){
         refreshLayout.setRefreshHeader(ClassicsHeader(context)); //经典头
         refreshLayout.setRefreshFooter(ClassicsFooter(context)); //经典尾
-//        refreshLayout.setRefreshHeader(BezierRadarHeader(context).setEnableHorizontalDrag(true)) //雷达刷新头
-//        refreshLayout.setRefreshHeader(new MaterialHeader(this));//谷歌刷新头
-//        refreshLayout.setRefreshHeader(new TwoLevelHeader(this));//二级刷新头
-//        refreshLayout.setRefreshFooter(BallPulseFooter(context).setSpinnerStyle(SpinnerStyle.Scale)) //脉冲尾
         refreshLayout.setOnRefreshListener { refreshlayout ->
-            refreshlayout.finishRefresh(1000 /*,false*/) //传入false表示刷新失败
+            viewModel.getFaxianList()
+            faxian_recycler.adapter!!.notifyDataSetChanged()
+            refreshlayout.finishRefresh(100 /*,false*/) //传入false表示刷新失败
         }
         refreshLayout.setOnLoadMoreListener { refreshlayout ->
-            refreshlayout.finishLoadMore(1000 /*,false*/) //传入false表示加载失败
+            refreshlayout.finishLoadMore(500 /*,false*/) //传入false表示加载失败
+            ToastUtils.show("已经到底了哦～")
         }
     }
 }

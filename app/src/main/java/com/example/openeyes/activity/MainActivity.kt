@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         selectFragment()
 
         sendImageView.setOnClickListener(View.OnClickListener {
-            Toast.makeText(this,"fabu",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this,"发布",Toast.LENGTH_SHORT).show()
             ARouter.getInstance().build(RouterPath.login).navigation()
         })
     }

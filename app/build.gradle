@@ -89,4 +89,6 @@ dependencies {
     //ARout
     implementation 'com.alibaba:arouter-api:1.5.0'
     kapt 'com.alibaba:arouter-compiler:1.2.2'
+    //吐司工具 ToastUtils.show("")
+    implementation 'com.hjq:toast:8.6'
 }
