@@ -1,0 +1,2 @@
+# openeyes
+这是一款我使用Kotlin语言，通过EyepetizerApp官方开放Api接口，以及Charles抓包工具，架构的MVVM模式+JetPack+Retrofit+OkHttp应用程序。目的是学习Kotlin语言。
