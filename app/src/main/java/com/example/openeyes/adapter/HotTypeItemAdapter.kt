@@ -43,4 +43,5 @@ class HotTypeItemAdapter(val context: Context, val itemList :List<ItemX> = Array
         val hottype_iv: RoundedImageView = itemView.findViewById(R.id.home_hot_iv)
         val hottype_tv: TextView = itemView.findViewById(R.id.home_hot_tv)
     }
+
 }

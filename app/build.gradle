@@ -67,7 +67,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-    //okhttp答应log
+    //okhttp网络日志拦截器
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
     //方法数+类数>65536解决办法
     implementation 'com.android.support:multidex:1.0.3'
@@ -88,7 +88,10 @@ dependencies {
     implementation  'com.scwang.smart:refresh-header-two-level:2.0.1'   //二级刷新头
     //ARout
     implementation 'com.alibaba:arouter-api:1.5.0'
+    //Kotlin中引用注解需要使用kapt关键字
     kapt 'com.alibaba:arouter-compiler:1.2.2'
     //吐司工具 ToastUtils.show("")
     implementation 'com.hjq:toast:8.6'
+    //炫酷Logger
+    implementation 'com.orhanobut:logger:2.1.1'
 }

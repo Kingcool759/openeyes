@@ -56,7 +56,6 @@ class FaxianFragment : Fragment() {
         })
     }
 
-
     //设置recycler
     private fun setRecycler() {
         val layoutManager = LinearLayoutManager(context)
@@ -73,15 +72,11 @@ class FaxianFragment : Fragment() {
     //设置SmartRefreshLayout
     private fun setSmartRefreshLayout(){
         refreshLayout.setRefreshHeader(ClassicsHeader(context)); //经典头
-        refreshLayout.setRefreshFooter(ClassicsFooter(context)); //经典尾
-        refreshLayout.setOnRefreshListener { refreshlayout ->
+        refreshLayout.setOnRefreshListener {
             viewModel.getFaxianList()
             faxian_recycler.adapter!!.notifyDataSetChanged()
-            refreshlayout.finishRefresh(100 /*,false*/) //传入false表示刷新失败
+            it.finishRefresh(100 /*,false*/) //传入false表示刷新失败
         }
-        refreshLayout.setOnLoadMoreListener { refreshlayout ->
-            refreshlayout.finishLoadMore(500 /*,false*/) //传入false表示加载失败
-            ToastUtils.show("已经到底了哦～")
-        }
+        refreshLayout.setEnableLoadMore(false)
     }
 }
